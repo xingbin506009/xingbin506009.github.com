@@ -2,15 +2,46 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Xingbin506009.GitHub.com</title>
+<title>7-22homework</title>
 <style type="text/css">
-  *{ margin: 0; padding: 0;}
-  div{ height: 150px; width: 150px; background: aqua; position: absolute; left: 0; top: 0;}
+	#box{ height: 36px; width: 500px; border: 1px solid #000; position: relative; margin: 50px auto; border-radius: 20px; overflow: hidden;}
+	#box div{ position: absolute; left: 0; top: 0; width: 500px; height: 400px; background: -webkit-repeating-linear-gradient(-45deg,#FF0000 0px,#FF0000 10px,#00FF00 10px,#00FF00 20px); }
+	#sp1{ position: absolute; left: 60px; top: 35px; color: #FF0000;}
+	#sp2{ position: absolute; left: 123px; top: 35px; color: #00FF00;}
 </style>
 <script type="text/javascript">
+	window.onload = function(){
+		var oDiv = document.querySelector('#box div');
+		var oBtn1 = document.getElementById('btn1');
+		var oBtn2 = document.getElementById('btn2');
+		var oSp1 = document.getElementById('sp1');
+		var oSp2 = document.getElementById('sp2');
+		var t = 0;
+		setInterval(function(){
+			t-=2;
+			oDiv.style.top = t%113+'px';
+		},30);
+		oBtn1.onchange = function(){
+			oDiv.style.background = '-webkit-repeating-linear-gradient(-45deg,'+this.value+' 0px,'+this.value+' 10px,#00FF00 10px,#00FF00 20px)';
+			oSp1.style.color = this.value;
+			oSp1.innerHTML = this.value;
+		};
+		oBtn2.onchange = function(){
+			oDiv.style.background = '-webkit-repeating-linear-gradient(-45deg,#FF0000 0px,#FF0000 10px,'+this.value+' 10px,'+this.value+' 20px)';
+			oSp2.style.color = this.value;
+			oSp2.innerHTML = this.value;
+		};
+	};
 </script>
 </head>
 <body>
-  <div></div>  
+	颜色：
+	<input type="color" value="#FF0000" name="color" id="btn1">
+	<input type="color" value="#00FF00" name="color" id="btn2"><br>
+	<span id="sp1">#FF0000</span>
+	<span id="sp2">#00FF00</span>
+	<div id="box">
+		<div></div>
+	</div>
 </body>
 </html>
